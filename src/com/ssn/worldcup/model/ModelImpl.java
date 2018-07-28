@@ -14,7 +14,7 @@ public class ModelImpl implements Model {
 	}
 
 	@Override
-	public User checkLogin(String user, String password) {
+	public User checkLogin(final String user, final String password) {
 		return new WithSessionAndTransaction<User>() {
 
 			@Override
@@ -43,7 +43,7 @@ public class ModelImpl implements Model {
 	}
 
 	@Override
-	public boolean changePassword(String oldUser, String oldPass, String newPass) {
+	public boolean changePassword(final String oldUser, final String oldPass, final String newPass) {
 		return new WithSessionAndTransaction<Boolean>() {
 
 			@Override

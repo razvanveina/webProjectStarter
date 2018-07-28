@@ -16,19 +16,21 @@ import org.hibernate.cfg.Configuration;
  */
 
 public class SessionFactoryProvider {
-  private static SessionFactory factory;
+	private static SessionFactory factory;
 
-  public static SessionFactory getSessionFactory() {
-    if (factory == null) {
-      try {
-        Configuration configuration = new Configuration().configure();
-        StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties());
-        factory = configuration.buildSessionFactory(builder.build());
-      } catch (Throwable ex) {
-        System.err.println("Failed to create sessionFactory object." + ex);
-      }
-    }
+	public static SessionFactory getSessionFactory() {
+		if (factory == null) {
+			try {
+				Configuration configuration = new Configuration().configure();
+				StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder()
+						.applySettings(configuration.getProperties());
+				factory = configuration.buildSessionFactory(builder.build());
+			} catch (Throwable ex) {
+				System.err.println("Failed to create sessionFactory object." + ex);
+				throw new RuntimeException(ex);
+			}
+		}
 
-    return factory;
-  }
+		return factory;
+	}
 }

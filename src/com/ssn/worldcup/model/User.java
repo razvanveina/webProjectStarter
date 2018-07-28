@@ -10,7 +10,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import com.ssn.core.utils.Utils;
@@ -29,9 +28,7 @@ public class User implements Serializable, Comparable<User> {
 	public static final String USER_ALL = "Users.all";
 
 	@Id
-	@Column(name = "ID")
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "gen")
-	@SequenceGenerator(initialValue = 1, sequenceName = "seq_gen", name = "gen")
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 
 	@Column(name = "username")
